@@ -76,7 +76,6 @@ function get_gold_tot(){
 
 // SILVER - PURITY
 function silver_purity(direction){
-
     if( direction == 'up'){
             if( document.silver_calc.purity.value == '.800' ){ 	document.silver_calc.purity.value = '.830'; return true; }
             if( document.silver_calc.purity.value == '.830' ){ 	document.silver_calc.purity.value = '.925'; return true; }
@@ -103,42 +102,37 @@ function silver_unit(){
 
     return true;
 }	
-    //--------------------------------------
-    // CALC SILVER TOTAL
-    //--------------------------------------
-    function get_silver_tot(){
 
-if( isNaN(document.silver_calc.wgt.value) ){ document.silver_calc.wgt.value = 0; }
+// CALC SILVER TOTAL
+
+function get_silver_tot(){
+    if(isNaN(document.silver_calc.wgt.value)){document.silver_calc.wgt.value = 0;}
             
-var silver = 0;
-            var perc = document.silver_calc.purity.value;
-var wgt = document.silver_calc.wgt.value;
+    var silver = 0,
+        perc = document.silver_calc.purity.value,
+        wgt = document.silver_calc.wgt.value;
 
-if( perc == 'Sterling' || perc == 'SS' ){ perc = .925; }
+    if(perc == 'Sterling' || perc == 'SS' ){perc = .925;}
 
-            //----------------------------------------
-            // CONVERT UNITS
-            //----------------------------------------
-            //if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 28.3495231; }
-            if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 31.1; }
-//if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt / 1.555; }
-if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt * 1.555; }
+    // CONVERT UNITS
 
-            //----------------------------------------
-            // CALC TOTAL
-            //----------------------------------------
-            silver = ( ( 17.5900 / 31.1 ) * perc ) * wgt;
+    //if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 28.3495231; }
+    if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 31.1; }
+    //if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt / 1.555; }
+    if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt * 1.555; }
 
-            //----------------------------------------
-            // IF TOT > 1000, USE DIFFERENT CLASS
-            //----------------------------------------
-            if( silver > 1000 ){  document.silver_calc.silver_tot.setAttribute("class", "input4a"); }
-            if( silver > 10000 ){ document.silver_calc.silver_tot.setAttribute("class", "input4b"); }
+    // CALC TOTAL
+    silver = ( ( 17.5900 / 31.1 ) * perc ) * wgt;
 
-           	silver = silver.toFixed(2);
-            silver = addCommas(silver);
+    //----------------------------------------
+    // IF TOT > 1000, USE DIFFERENT CLASS
+    //----------------------------------------
+    if(silver > 1000){document.silver_calc.silver_tot.setAttribute("class", "input4a");}
+    if(silver > 10000){document.silver_calc.silver_tot.setAttribute("class", "input4b");}
 
-            document.silver_calc.silver_tot.value = "$" + silver;
+   	silver = silver.toFixed(2);
+    silver = addCommas(silver);
 
+    document.silver_calc.silver_tot.value = "$" + silver;
     return true;
 }

@@ -1,119 +1,146 @@
 <!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Gold and Silver Calculator</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Gold and Silver Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-    <!-- GOLD START-->
-    <form name="gold_calc">
-        <div class="content-1" id="content-1" style="display: none;">
-            <div id="main-container">
-                <div class="title"></div>
-                <div class="nav">
-                    <ul>
-                        <li class="gold-selected" id="li-content-1"><a href="javascript:void(0);">Gold</a></li>
-                        <li class="silver" id="li-content-2"><a href="javascript:void(0);" onclick="flip_tabs('content-2','li-content-2')">Silver</a></li>
-                        <li class="diamonds" id="li-content-3"><a href="javascript:void(0);" onclick="flip_tabs('content-3','li-content-3')">Diamonds</a></li>
-                                        </ul>
-                </div>
-                <div class="main-content">
-                    <div class="info-line">
-                        <a href="#" class="question" onmouseover="return overlib('<b>Weight:</b> Please enter the weight of your gold here.  If you are unsure of the exact weight of your shipment, guess.  For reference, a U.S. nickel weighs about 5 grams.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                        <p>Weight</p>
-                        <input type="text" class="input1" value="0" name="wgt" onblur="get_gold_tot();" onclick="this.select();">
-                        <input type="text" class="input2" value="g" name="unit" readonly="">
-                        <div class="up-down-buttons upper">
-                            <a href="#" class="up-button" onclick="gold_unit();get_gold_tot();"></a>
-                            <a href="#" class="down-button" onclick="gold_unit();get_gold_tot();"></a>
-                        </div>
-                    </div>
-                    <div class="info-line">
-                        <a href="#" class="question" onmouseover="return overlib('<b>Karats:</b> Please enter the karat of your gold here.  If you are measuring jewelry, there is usually a stamp indicating the karat value on the inside of the piece (for example, a carving on the inside surface of a ring).  The higher the karat value, the more gold there is in the piece and the softer the piece will be.  If you are unsure and there is no karat stamp, 14 karat is the most common.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,-110,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                        <p>Karats</p>
-                        <input type="text" class="input3" name="karat" value="14K" onblur="get_gold_tot();" readonly="">
-                        <div class="up-down-buttons">
-                            <a href="#" class="up-button" onclick="gold_karat('up');get_gold_tot();"></a>
-                            <a href="#" class="down-button" onclick="gold_karat('dn');get_gold_tot();"></a>
-                        </div>
-                    </div>
-                    <div class="info-line">
-                        <a href="#" class="equals"></a>
-                        <input type="text" class="input4a" name="gold_tot" value="$0" readonly="">
-                    </div>
-                </div>
-                <div class="total">
-                    <div class="content" id="today" style="display: none;">
-                        <p>Today's Gold Price: $1264.25/oz</p>
-                    </div>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- GOLD START-->
+    <table style="border: thin solid #ccc; width: 760px">
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" id="XAU_Weight" title="Weight Amount" value="1" onchange="XAU_Update();">
+                </td>
+                <td>
+                    <select id="XAU_WeightType_Select" title="Weight" onchange="XAU_Update();">
+                        <option value="O">Ounce</option>
+                        <option value="G">Gram</option>
+                        <option value="K">Kilogram</option>
+                    </select>
+                </td>
+                <td align="right">
+                    Premium
+                </td>
+                <td>
+                    <input type="text" id="XAU_Premium1" title="Premium Percent" value="0.0" onchange="XAU_Update();">%
+                </td>
+                <td align="right">
+                    =
+                </td>
+                <td>
+                    <input type="text" id="XAU_Currency" title="Current Value" value="" readonly="readonly" class="readonly">
+                </td>
+                <td>
+                    <select id="XAU_Select" title="Currency" onchange="XAU_Update();">
+                        <option value="XAU_USD">USD</option>
+                        <option value="XAU_AED">AED</option>
+                        <option value="XAU_ARS">ARS</option>
+                        <option value="XAU_AUD">AUD</option>
+                        <option value="XAU_BRL">BRL</option>
+                        <option value="XAU_CAD">CAD</option>
+                        <option value="XAU_CHF">CHF</option>
+                        <option value="XAU_CNY">CNY</option>
+                        <option value="XAU_COP">COP</option>
+                        <option value="XAU_EUR">EUR</option>
+                        <option value="XAU_GBP">GBP</option>
+                        <option value="XAU_HKD">HKD</option>
+                        <option value="XAU_IDR">IDR</option>
+                        <option value="XAU_INR">INR</option>
+                        <option value="XAU_JPY">JPY</option>
+                        <option value="XAU_KWD">KWD</option>
+                        <option value="XAU_MXN">MXN</option>
+                        <option value="XAU_MYR">MYR</option>
+                        <option value="XAU_NZD">NZD</option>
+                        <option value="XAU_PHP">PHP</option>
+                        <option value="XAU_RUB">RUB</option>
+                        <option value="XAU_SEK">SEK</option>
+                        <option value="XAU_SGD">SGD</option>
+                        <option value="XAU_TRY">TRY</option>
+                        <option value="XAU_VUV">VUV</option>
+                        <option value="XAU_ZAR">ZAR</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" align="center">
+                    <span id="XAU_PriceByWeight"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- GOLD END-->
 
-                    <div class="special_bonus" id="special_bonus" style="display: block;">
-                            <a href="http://cashforgoldusa.com" target="_parent"><img src="/calc/images-large/calculator-rollover.jpg"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <!-- GOLD END-->
-
-    <!-- SILVER START-->
-    <form name="silver_calc">
-<div class="content-2" id="content-2" style="display: none;">
-        <div id="main-container">
-            <div class="title-silver"></div>
-            <div class="nav">
-                <ul>
-                    <li class="gold" id="li-content-3"><a href="javascript:void(0);" onclick="flip_tabs('content-1','li-content-3')">Gold</a></li>
-                    <li class="silver-selected" id="li-content-4"><a href="javascript:void(0);">Silver</a></li>
-                    <li class="diamonds" id="li-content-9"><a href="javascript:void(0);" onclick="flip_tabs('content-3','li-content-9')">Diamonds</a></li>
-                    
-                                    </ul>
-            </div>
-            <div class="main-content">
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Weight:</b> Please enter the weight of your silver here. If you are unsure of the exact weight of your shipment, guess.  For reference, a U.S. nickel weighs about 5 grams.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Weight</p>
-                    <input type="text" class="input1" name="wgt" value="0" onblur="get_silver_tot();" onclick="this.select();">
-                    <input type="text" class="input2" name="unit" value="g" readonly="">
-                    <div class="up-down-buttons upper">
-                        <a href="#" class="up-button" onclick="silver_unit();get_silver_tot();"></a>
-                        <a href="#" class="down-button" onclick="silver_unit();get_silver_tot();"></a>
-                    </div>
-                </div>
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Purity:</b> Please enter the purity of your silver here.  If you are unsure, check the piece for its hallmark; silver pieces are traditionally imprinted with the purity level on an unobtrusive part of the piece (try the back of a fork or spoon for silverware).  If there is no hallmark on your piece, sterling silver used for silverware and jewelry is usually 925 in purity, while coins are usually 900.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,-110,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Purity</p>
-                    <input type="text" class="input3" name="purity" value="SS" readonly="">
-                    <div class="up-down-buttons">
-                        <a href="#" class="up-button" onclick="silver_purity('up');get_silver_tot();"></a>
-                        <a href="#" class="down-button" onclick="silver_purity('dn');get_silver_tot();"></a>
-                    </div>
-                </div>
-                <div class="info-line">
-                    <a href="#" class="equals"></a>
-                    <input type="text" class="input4a" name="silver_tot" value="$0" readonly="">
-                </div>
-            </div>
-            <div class="total total-silver">
-                <div class="content">
-                    <p>Today's Silver Price: $17.59/oz</p>
-                </div>
-            </div>
-        </div>
-</div>
-</form>
-    <!-- SILVER END-->
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-    </body>
+<!-- SILVER START-->
+    <table style="border: thin solid #ccc; width: 760px">
+        <tbody>
+            <tr>
+                <td>
+                    <input type="text" id="XAG_Weight" title="Weight Amount" value="1" onchange="XAG_Update();">
+                </td>
+                <td>
+                    <select id="XAG_WeightType_Select" title="Weight" onchange="XAG_Update();">
+                        <option value="O">Ounce</option>
+                        <option value="G">Gram</option>
+                        <option value="K">Kilogram</option>
+                    </select>
+                </td>
+                <td align="right">
+                    Premium
+                </td>
+                <td>
+                    <input type="text" id="XAG_Premium1" title="Premium Percent" value="0.0" onchange="XAG_Update();">%
+                </td>
+                <td align="right">
+                    =
+                </td>
+                <td>
+                    <input type="text" id="XAG_Currency" title="Current Value" value="" readonly="readonly" class="readonly">
+                </td>
+                <td>
+                    <select id="XAG_Select" title="Currency" onchange="XAG_Update();">
+                        <option value="XAG_USD">USD</option>
+                        <option value="XAG_AED">AED</option>
+                        <option value="XAG_ARS">ARS</option>
+                        <option value="XAG_AUD">AUD</option>
+                        <option value="XAG_BRL">BRL</option>
+                        <option value="XAG_CAD">CAD</option>
+                        <option value="XAG_CHF">CHF</option>
+                        <option value="XAG_CNY">CNY</option>
+                        <option value="XAG_COP">COP</option>
+                        <option value="XAG_EUR">EUR</option>
+                        <option value="XAG_GBP">GBP</option>
+                        <option value="XAG_HKD">HKD</option>
+                        <option value="XAG_IDR">IDR</option>
+                        <option value="XAG_INR">INR</option>
+                        <option value="XAG_JPY">JPY</option>
+                        <option value="XAG_KWD">KWD</option>
+                        <option value="XAG_MXN">MXN</option>
+                        <option value="XAG_MYR">MYR</option>
+                        <option value="XAG_NZD">NZD</option>
+                        <option value="XAG_PHP">PHP</option>
+                        <option value="XAG_RUB">RUB</option>
+                        <option value="XAG_SEK">SEK</option>
+                        <option value="XAG_SGD">SGD</option>
+                        <option value="XAG_TRY">TRY</option>
+                        <option value="XAG_VUV">VUV</option>
+                        <option value="XAG_ZAR">ZAR</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" align="center">
+                    <span id="XAG_PriceByWeight"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<!-- SILVER END-->
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calc.min.js"></script>
+</body>
 </html>
