@@ -1,146 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Gold and Silver Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="css/style.css">
+<title>Silver Price Calculator - Silver Price OZ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="http://img.silverpriceoz.com/style.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/silverdate.min.js"></script>
+<script src="js/datepicker.js"></script>
 </head>
 <body>
-<!-- GOLD START-->
-    <table style="border: thin solid #ccc; width: 760px">
-        <tbody>
-            <tr>
-                <td>
-                    <input type="text" id="XAU_Weight" title="Weight Amount" value="1" onchange="XAU_Update();">
-                </td>
-                <td>
-                    <select id="XAU_WeightType_Select" title="Weight" onchange="XAU_Update();">
-                        <option value="O">Ounce</option>
-                        <option value="G">Gram</option>
-                        <option value="K">Kilogram</option>
-                    </select>
-                </td>
-                <td align="right">
-                    Premium
-                </td>
-                <td>
-                    <input type="text" id="XAU_Premium1" title="Premium Percent" value="0.0" onchange="XAU_Update();">%
-                </td>
-                <td align="right">
-                    =
-                </td>
-                <td>
-                    <input type="text" id="XAU_Currency" title="Current Value" value="" readonly="readonly" class="readonly">
-                </td>
-                <td>
-                    <select id="XAU_Select" title="Currency" onchange="XAU_Update();">
-                        <option value="XAU_USD">USD</option>
-                        <option value="XAU_AED">AED</option>
-                        <option value="XAU_ARS">ARS</option>
-                        <option value="XAU_AUD">AUD</option>
-                        <option value="XAU_BRL">BRL</option>
-                        <option value="XAU_CAD">CAD</option>
-                        <option value="XAU_CHF">CHF</option>
-                        <option value="XAU_CNY">CNY</option>
-                        <option value="XAU_COP">COP</option>
-                        <option value="XAU_EUR">EUR</option>
-                        <option value="XAU_GBP">GBP</option>
-                        <option value="XAU_HKD">HKD</option>
-                        <option value="XAU_IDR">IDR</option>
-                        <option value="XAU_INR">INR</option>
-                        <option value="XAU_JPY">JPY</option>
-                        <option value="XAU_KWD">KWD</option>
-                        <option value="XAU_MXN">MXN</option>
-                        <option value="XAU_MYR">MYR</option>
-                        <option value="XAU_NZD">NZD</option>
-                        <option value="XAU_PHP">PHP</option>
-                        <option value="XAU_RUB">RUB</option>
-                        <option value="XAU_SEK">SEK</option>
-                        <option value="XAU_SGD">SGD</option>
-                        <option value="XAU_TRY">TRY</option>
-                        <option value="XAU_VUV">VUV</option>
-                        <option value="XAU_ZAR">ZAR</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7" align="center">
-                    <span id="XAU_PriceByWeight"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<!-- GOLD END-->
-
-<!-- SILVER START-->
-    <table style="border: thin solid #ccc; width: 760px">
-        <tbody>
-            <tr>
-                <td>
-                    <input type="text" id="XAG_Weight" title="Weight Amount" value="1" onchange="XAG_Update();">
-                </td>
-                <td>
-                    <select id="XAG_WeightType_Select" title="Weight" onchange="XAG_Update();">
-                        <option value="O">Ounce</option>
-                        <option value="G">Gram</option>
-                        <option value="K">Kilogram</option>
-                    </select>
-                </td>
-                <td align="right">
-                    Premium
-                </td>
-                <td>
-                    <input type="text" id="XAG_Premium1" title="Premium Percent" value="0.0" onchange="XAG_Update();">%
-                </td>
-                <td align="right">
-                    =
-                </td>
-                <td>
-                    <input type="text" id="XAG_Currency" title="Current Value" value="" readonly="readonly" class="readonly">
-                </td>
-                <td>
-                    <select id="XAG_Select" title="Currency" onchange="XAG_Update();">
-                        <option value="XAG_USD">USD</option>
-                        <option value="XAG_AED">AED</option>
-                        <option value="XAG_ARS">ARS</option>
-                        <option value="XAG_AUD">AUD</option>
-                        <option value="XAG_BRL">BRL</option>
-                        <option value="XAG_CAD">CAD</option>
-                        <option value="XAG_CHF">CHF</option>
-                        <option value="XAG_CNY">CNY</option>
-                        <option value="XAG_COP">COP</option>
-                        <option value="XAG_EUR">EUR</option>
-                        <option value="XAG_GBP">GBP</option>
-                        <option value="XAG_HKD">HKD</option>
-                        <option value="XAG_IDR">IDR</option>
-                        <option value="XAG_INR">INR</option>
-                        <option value="XAG_JPY">JPY</option>
-                        <option value="XAG_KWD">KWD</option>
-                        <option value="XAG_MXN">MXN</option>
-                        <option value="XAG_MYR">MYR</option>
-                        <option value="XAG_NZD">NZD</option>
-                        <option value="XAG_PHP">PHP</option>
-                        <option value="XAG_RUB">RUB</option>
-                        <option value="XAG_SEK">SEK</option>
-                        <option value="XAG_SGD">SGD</option>
-                        <option value="XAG_TRY">TRY</option>
-                        <option value="XAG_VUV">VUV</option>
-                        <option value="XAG_ZAR">ZAR</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7" align="center">
-                    <span id="XAG_PriceByWeight"></span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<!-- SILVER END-->
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/calc.min.js"></script>
+    <div class="header">
+    <div class="logo"><a href="http://www.silverpriceoz.com" title="Silver Price OZ"><img src="http://img.silverpriceoz.com/logo.png" alt="Silver Price OZ" width="280" height="60" /></a></div>
+    <h1>Silver Price Calculator</h1>
+    <div class="head_title">
+    <h2>silver price calculator - easily operate, quickly calculate</h2>
+    </div></div>
+    <hr id="google-linkads" style="border:1px solid #ccc;clear:left;"/><div class="container">
+    <div class="container_left">
+    <div class="dis"><a href="../" title="Silver Price OZ">Silver Price</a>  » <a href="../silver-price-calculator/" title="Silver Price Calculator">Silver Price Calculator</a> </div>
+    <div class="silver_about">If you would like to estimate the value of your silver, please use <strong>Silver Price Calculator</strong> which is a free service provided by silverpriceoz.com. Silver Price Calculator is easily to operate, quickly to calculate the result. You can entry the silver weight, select your required currency and measurement unit, real-time silver price or historical silver price to calculate the total amount of silver.</div>
+    <div class="silver_ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle silverres"
+         style="display:inline-block"
+         data-ad-client="ca-pub-3747066605886702"
+         data-ad-slot="8816272340"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script></div>
+    <div class="silver_rate">
+    <b style="font-size:24px;"> Silver Price Per Ounce </b><br /> <br /> 
+    <b style="font-size:24px;">= </b><br /><br /> 
+    <b style="font-size:24px;"> 17.42 US Dollar</b><br /><br /> 
+    <span class="silver_span">Bid Price: </span>$17.42<br /><br /> 
+    <span class="silver_span">Ask Price: </span>$17.51<br /><br /> 
+    <span class="silver_span">Day's Range:</span> $17.14 - $17.73<br /> 
+    <span class="silver_span">Prices Updated: Feb 04, 2015  at 23:56 NY Time </span>
+    </div>
+    <div class="silver_table">
+    <br />
+    <h3>Silver Price Calculator</h3>
+    <h4 style="font-size:14px;">1. Entry total number of silver; select unit: </h4>
+    <span >Amount : <input id="silveramount" type="text" value="1" style="margin-right:10px;" size=9 />
+     Measure : <select id="silvermeasure">
+    <option value="O">Ounce</option>
+    <option value="G">Gram</option>
+    <option value="K">Kilogram</option>
+    </select></span>
+    <h4 style="font-size:14px;">2. Select your required currency : </h4>
+    <span >Currency :<select id="selectCurrency">
+    <option value="aud">Australian Dollar(AUD)</option>
+    <option value="cad">Canadian Dollar(CAD)</option>
+    <option value="cny">Chinese Yuan(CNY)</option>
+    <option value="eur">Euro(EUR)</option>
+    <option value="inr">Indian rupee(INR)</option>
+    <option value="jpy">Japanese Yen(JPY)</option>
+    <option value="rub">Russian Ruble(RUB)</option>
+    <option value="chf">Swiss Franc(CHF)</option>
+    <option value="zar">South African(ZAR)</option>
+    <option value="gbp">United Kingdom(GBP)</option>
+    <option value="usd" selected>US dollars</option>
+    </select></span>
+    <h4 style="font-size:14px;">3. Select Current silver Price or historical silver price: </h4>
+    <span ><input checked="checked" name="radio" type="radio" id="c"/>Real Time Prices
+    <input name="radio" type="radio" id="h"/>Historical Closes</span>
+    <p style="padding-left:55px;">Date: <input id="datepicker" type="text" value="02/04/2015" disabled="disabled"></p>
+    <h4 style="font-size:14px;">4. Total amount of silver:</h4>
+    <span><input id="silverresult" type="text" value="17.42" /></span>
+    </div>
+    <div class="silver_ad720">
+    <ins class="adsbygoogle silverres720"
+         style="display:inline-block"
+         data-ad-client="ca-pub-3747066605886702"
+         data-ad-slot="8816272340"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script></div>
+    <div class="ounce_con">
+    <h4>NOTES:</h4>
+    <p>1. The Silver price Calculator only provides an estimated value of your silver.</p>
+    <p>2. The commonly used units are troy ounce, gram, and kilogram. The conversion between them is as below:</p>
+    1 troy ounce = 31.1034768 grams, or 0.0311034768 kilograms.<br />
+      1 gram = 0.03215 troy ounces<br />
+      1 gram = 0.001 kilograms<br />
+    <p>3. The real-time price represents the latest silver spot price; and the historical closes price is the <a href="http://www.goldpriceoz.com/london-gold-price-fixing.html" title="London gold price fixing">London PM fixing price</a>.</p></div>
+    <div style="float:left;padding-top:15px;"><script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>    
+        ad = document.getElementById('google-linkads');   
+        var adWidth = (typeof ad.getBoundingClientRect === 'function') ?
+        ad.getBoundingClientRect().width : ad.offsetWidth;   
+        google_ad_client = "ca-pub-3747066605886702";
+        if ( adWidth >= 728 )      google_ad_param = ["728", "15", "6313096342"];
+        else if ( adWidth >= 468 ) google_ad_param = ["468", "15", "2280544345"];
+        else if ( adWidth >= 200 ) google_ad_param = ["200", "90", "6710743942"];
+        else if ( adWidth >= 180 ) google_ad_param = ["180", "90", "8187477140"];
+        else if ( adWidth >= 160 ) google_ad_param = ["160", "90", "9664210349"];
+        else                       google_ad_param = ["120", "90", "2140943544"];
+        document.write (
+        '<ins class="adsbygoogle" style="display:inline-block;'
+        + 'width:' + google_ad_param[0] + 'px;'
+        + 'height:' + google_ad_param[1] + 'px'
+        + '" data-ad-client="' + google_ad_client
+        + '" data-ad-slot="' + google_ad_param[2]
+        + '"></ins>'
+        );
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script></div></div>
 </body>
 </html>

@@ -1,148 +1,39 @@
-body {margin: 0; padding: 0; font-size: 12px; font-family: Helvetica; background: #fff;}
-
-img {border: none;}
-
-a {text-decoration: none;}
-
-a:hover {text-decoration: none;}
-
-p {line-height: normal;}
-
-#main-container {float: left; position: relative; width: 500px;}
-
-#main-container .title {float: left; position: relative; width: 500px; height: 78px; background: url(/calc/images-large/title-bg-gold.jpg) top center no-repeat;}
-
-#main-container .nav {float: left; width: 500px; height: 76px; background: url(/calc/images-large/nav-bg.jpg) top center repeat-x;}
-
-#main-container .nav ul {text-align: center; display: block; list-style: none; margin: 0; padding: 0;}
-
-#main-container .nav ul li {float: left; display: block; text-indent: -999px; margin-top: 9px;}
-
-#main-container .nav .gold-selected a {float: left; position: relative; left: 25px; display: block; width: 101px; height: 54px; background: url(/calc/images-large/gold-selected.png) top center no-repeat;}
-
-#main-container .nav .gold a {float: left; position: relative; left: 25px; display: block; width: 101px; height: 54px; background: url(/calc/images-large/gold-button.png) top center no-repeat;}
-
-#main-container .nav .gold a:hover {background: url(/calc/images-large/gold-selected.png) top center no-repeat;}
-
-#main-container .nav .silver a {float: left; position: relative; left: 153px; display: block; width: 112px; height: 54px; background: url(/calc/images-large/silver-button.png) top center no-repeat;}
-
-#main-container .nav .silver a:hover {background: url(/calc/images-large/silver-button-over.png) top center no-repeat;}
-
-#main-container .nav .diamonds a {float: left; position: relative; left: 290px; display: block; width: 188px; height: 54px; background: url(/calc/images-large/diamonds-button.png) top center no-repeat;}
-
-#main-container .nav .diamonds a:hover {background: url(/calc/images-large/diamonds-button-over.png) top center no-repeat;}
-
-#main-container .main-content {float: left; position: relative; width: 500px; height: 376px; background: url(/calc/images-large/main-content-bg.jpg) top center no-repeat;}
-
-#main-container .main-content .info-line {float: left; position: relative; width: 452px; padding: 20px 24px;}
-
-#main-container .main-content .info-line .question {float: left; position: relative; width: 25px; height: 40px; margin-top: 17px; background: url(/calc/images-large/question.png) top center no-repeat; }
-
-#main-container .main-content .info-line .question-cut {left: 30px; margin-top: 20px;}
-
-#main-container .main-content .info-line p {float: left; width: 145px; color: #fff; font-size: 45px; margin: 0; padding: 8px 5px 0 5px; line-height: 60px;}
-
-input {padding: 0;}
-
-#main-container .main-content input {-webkit-appearance: none; -webkit-border-radius:0px; padding: 0 3px;}
-
-#main-container .main-content .info-line input {font-size: 50px;}
-
-/* #main-container .main-content .info-line .input1 {float: left; width: 125px; padding: 5px; background: #fff; border: none;} */
-#main-container .main-content .info-line .input1 {float: left; width: 95px; padding: 5px; background: #fff; border: none;}
-
-/*#main-container .main-content .info-line .input2 {float: left; position: relative; top: 1px; text-align: center; left: 8px; width: 120px; height: 68px; padding: 5px; background: #fff; border: none;}*/
-#main-container .main-content .info-line .input2 {float: left; position: relative; text-align: center; left: 8px; width: 96px; padding: 5px; background: #fff; border: none;} 
-
-#main-container .main-content .info-line .input3 {float: left; position: relative; width: 208px; padding: 5px; background: #fff; border: none;}
-
-#main-container .main-content .info-line .input4 {float: left; position: relative; left: 0; font-size: 75px; text-align: right; width: 335px; height: 67px; padding: 20px; background: #fff; border: none; background: url(/calc/images-large/input4bg.png) top center no-repeat;}
-
-#main-container .main-content .info-line .input4a {float: left; position: relative; left: 0; font-size: 63px; text-align: right; width: 335px; height: 67px; padding: 20px; background: #fff; border: none; background: url(/calc/images-large/input4bg.png) top center no-repeat;}
-
-#main-container .main-content .info-line .input4b {float: left; position: relative; left: 0; font-size: 58px; text-align: right; width: 335px; height: 67px; padding: 20px; background: #fff; border: none; background: url(/calc/images-large/input4bg.png) top center no-repeat;}
-
-#main-container .main-content .info-line .input5 {float: left; position: relative; font-size: 25px; width: 90px; height: 57px; margin-top: 10px; text-align: center; background: #fff; border: none;}
-
-#main-container .main-content .info-line .input6 {float: left; position: relative; font-size: 25px; text-align: center; left: 16px; width: 39px; height: 57px; margin-top: 10px; background: #fff; border: none;}
-
-#main-container .main-content .info-line .up-down-buttons {float: left; position: relative; left: 10px; width: 38px; height: 59px; margin-top: 8px;}
-
-#main-container .main-content .info-line .upper {left: 18px; margin-top: 10px;}
-
-#main-container .main-content .info-line .upper2 {margin-top: 10px;}
-
-#main-container .main-content .info-line .up-down-buttons .up-button {float: left; position: relative; width: 38px; height: 29px; background: url(/calc/images-large/up-button.png) top center no-repeat;}
-
-#main-container .main-content .info-line .up-down-buttons .down-button {float: left; position: relative; width: 38px; height: 30px; background: url(/calc/images-large/up-button.png) bottom center no-repeat;}
-
-#main-container .main-content .info-line .equals {float: left; position: relative; width: 70px; height: 105px; background: url(/calc/images-large/equals.png) top center no-repeat;}
-
-#main-container .total {float: left; position: relative; width: 500px; height: 69px; background: url(/calc/images-large/total-bg.jpg) top center no-repeat;}
-
-#main-container .total p {color: #000; font-size: 31px; margin: 0; padding: 0;}
-
-#main-container .total .content {padding: 20px 0px 0px 20px;}
-
-
-
-#main-container .embed {float: left; position: relative; width: 500px; height: 57px; background: url(/calc/images-large/embed-bg.jpg) top center repeat-x;} 
-
-#main-container .embed {color: #fff; font-size: 28px; margin: 0; padding: 0;}
-
-#main-container .embed .content {padding: 10px 0px 0px 20px;}
-
-#main-container .embed a {color: #fff;}
-
-#main-container .embed a:hover {text-decoration: underline;}
-
-#main-container .embed .content .input_embed { font-size: 14px; position: relative; width: 258px; padding: 5px; background: #fff; border: none; top: -8px; }
-
-#main-container .embed .content .question { float: left; position: relative; width: 25px; height: 40px; margin-top: 17px; background: url(/calc/images-large/question.png) top center no-repeat; }
-
-#main-container .embed .content .question-bottom {float: left; position: relative; width: 25px; height: 40px; margin: -4px 5px 0 0; background: url(/calc/images-large/question.png) top center no-repeat; }
-
-#main-container .footer {float: left; position: relative; width: 500px; height: 50px; background: url(/calc/images-large/footer-bg.jpg) top center no-repeat;}
-
-#main-container .footer p {color: #fff; font-size: 20px; margin: 0; padding: 0;}
-
-#main-container .footer a {color: #FCD921;}
-
-#main-container .footer a:hover {text-decoration: underline;}
-
-#main-container .footer .content {padding: 10px 15px; text-align: right;}
-
-
-/*
-ORIGINAL
-
-#main-container .embed {float: left; position: relative; width: 500px; height: 57px; background: url(/calc/images-large/embed-bg.jpg) top center repeat-x;} 
-
-#main-container .embed p {color: #fff; font-size: 28px; margin: 0; padding: 0;}
-
-#main-container .embed .content {padding: 15px 0px 0px 20px;}
-
-#main-container .embed .content .input_embed { font-size: 14px; position: relative; width: 258px; padding: 5px; background: #fff; border: none; }
-
-#main-container .embed .content .question { float: left; position: relative; width: 25px; height: 40px; margin-top: 17px; background: url(/calc/images-large/question.png) top center no-repeat; }
-
-#main-container .footer {float: left; position: relative; width: 500px; height: 96px; background: url(/calc/images-large/footer-bg.jpg) top center no-repeat;}
-
-#main-container .footer p {color: #fff; font-size: 33px; margin: 0; padding: 0;}
-
-#main-container .footer a {color: #FCD921;}
-
-#main-container .footer a:hover {text-decoration: underline;}
-
-#main-container .footer .content {padding: 10px 5px; text-align: center;}
-*/
-
-/*SILVER*/
-
-#main-container .title-silver {float: left; position: relative; width: 500px; height: 78px; background: url(/calc/images-large/title-bg-silver.jpg) top center no-repeat;}
-
-#main-container .nav .silver-selected a {float: left; position: relative; left: 153px; display: block; width: 112px; height: 54px; background: url(/calc/images-large/silver-button-over.png) top center no-repeat;}
-
-#main-container .total-silver {background: url(/calc/images-large/total-bg-silver.jpg) top center no-repeat;}
-
-#main-container .total-silver .content {padding: 20px 0px 0px 35px;}
+.prcalc {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #000000;
+    font-size: 14px;
+    background-color: #FFFFDF;
+    }
+.prcalchead {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #666666;
+    text-transform: uppercase;
+    word-spacing: 10px;
+}
+.style2 {color: #8e7d54;}
+.style3 {color: gray}
+.out {
+    background-color: #FFFFFF;
+    border: 0;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+    border-color: FDDF84;
+    border-width: 0;
+    border-top-color: FDDF84;
+    border-right-color: FDDF84;
+    border-bottom-color: FDDF84;
+    border-left-color: FDDF84;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    display: none;
+}
