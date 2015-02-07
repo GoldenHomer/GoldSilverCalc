@@ -8,402 +8,93 @@
     <meta name="keywords" content=""/>
     
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="calc.js"></script>
-    <script type="text/javascript" src="calc_diamonds.js"></script>
-
+    <script src="calc.js"></script>
+    <script src="js/gold.js"></script>
+    <script src="js/silver.js"></script>
 </head>
-    <body>
-    <script>
-        //--------------------------------------
-        // GOLD - KARAT
-        //--------------------------------------
-                function gold_karat( direction ){
-
-            if( direction == 'up' ){
-                if( document.gold_calc.karat.value == '8K'   ){ document.gold_calc.karat.value = '10K'; return true; }
-                if( document.gold_calc.karat.value == '10K'  ){ document.gold_calc.karat.value = '12K'; return true; }
-                if( document.gold_calc.karat.value == '12K'  ){ document.gold_calc.karat.value = '14K'; return true; }
-                if( document.gold_calc.karat.value == '14K'  ){ document.gold_calc.karat.value = '18K'; return true; }
-                if( document.gold_calc.karat.value == '18K'  ){ document.gold_calc.karat.value = '22K'; return true; }
-                if( document.gold_calc.karat.value == '22K'  ){ document.gold_calc.karat.value = '24K'; return true; }
-            }
-            if( direction == 'dn' ){
-                            if( document.gold_calc.karat.value == '10K'  ){ document.gold_calc.karat.value = '8K'; return true; }
-                            if( document.gold_calc.karat.value == '12K'  ){ document.gold_calc.karat.value = '10K'; return true; }
-                            if( document.gold_calc.karat.value == '14K'  ){ document.gold_calc.karat.value = '12K'; return true; }
-                            if( document.gold_calc.karat.value == '18K'  ){ document.gold_calc.karat.value = '14K'; return true; }
-                            if( document.gold_calc.karat.value == '22K'  ){ document.gold_calc.karat.value = '18K'; return true; }
-                            if( document.gold_calc.karat.value == '24K'  ){ document.gold_calc.karat.value = '22K'; return true; }
-            }
-            return true;
-                }
-        //--------------------------------------
-                // GOLD - UNIT
-                //--------------------------------------
-                function gold_unit(  ){
-            
-                            if( document.gold_calc.unit.value == 'g'   ){  document.gold_calc.unit.value = 'oz'; return true; }
-                            if( document.gold_calc.unit.value == 'oz'   ){ document.gold_calc.unit.value = 'dwt'; return true; }
-                            if( document.gold_calc.unit.value == 'dwt'  ){ document.gold_calc.unit.value = 'g';  return true; }
-        }
-                //--------------------------------------
-                // CALC GOLD TOTAL
-                //--------------------------------------
-                function get_gold_tot(){
-
-            if( isNaN(document.gold_calc.wgt.value) ){ document.gold_calc.wgt.value = 0; }
-
-                        var gold = 0;
-                        var perc = 1;
-            var wgt = document.gold_calc.wgt.value;
-
-                        if( document.gold_calc.karat.value == '8K'   ){ perc = .333; }
-                        if( document.gold_calc.karat.value == '10K'  ){ perc = .417; }
-                        if( document.gold_calc.karat.value == '12K'  ){ perc = .500; }
-                        if( document.gold_calc.karat.value == '14K'  ){ perc = .585; }
-                        if( document.gold_calc.karat.value == '18K'  ){ perc = .750; }
-                        if( document.gold_calc.karat.value == '22K'  ){ perc = .916; }
-                        if( document.gold_calc.karat.value == '24K'  ){ perc = .999; }
-
-            //----------------------------------------
-            // CONVERT UNITS
-            //----------------------------------------
-            //if( document.gold_calc.unit.value == 'oz' ){  wgt = wgt * 28.3495231; }
-            if( document.gold_calc.unit.value == 'oz' ){  wgt = wgt * 31.1; }
-            //if( document.gold_calc.unit.value == 'dwt' ){ wgt = wgt / 1.555; }
-            if( document.gold_calc.unit.value == 'dwt' ){ wgt = wgt * 1.555; }
-                        
-            //----------------------------------------
-            // CALC TOTAL
-            //----------------------------------------
-            gold = ( ( 1241.00 / 31.1 ) * perc ) * wgt;
-
-            //----------------------------------------
-            // IF TOT > 1000, USE DIFFERENT CLASS
-            //----------------------------------------
-                        if( gold > 1000 ){  document.gold_calc.gold_tot.setAttribute("class", "input4a"); }
-                        if( gold > 10000 ){ document.gold_calc.gold_tot.setAttribute("class", "input4b"); }
-
-            gold = gold.toFixed(2);
-            gold = addCommas(gold);
-
-            document.gold_calc.gold_tot.value = "$" + gold;
-
-                        //----------------------------------------
-                        // DISPLAY OFFER
-                        //----------------------------------------
-                        document.getElementById('today').style.display='none';
-                        document.getElementById('special_bonus').style.display='block';
-
-                        return true;
-                }
-
-
-
-
-        //--------------------------------------
-        // SILVER - PURITY
-        //--------------------------------------
-                function silver_purity( direction ){
-
-                        if( direction == 'up' ){
-                                if( document.silver_calc.purity.value == '.800' ){  document.silver_calc.purity.value = '.830'; return true; }
-                                if( document.silver_calc.purity.value == '.830' ){  document.silver_calc.purity.value = '.925'; return true; }
-                                if( document.silver_calc.purity.value == '.925' ){  document.silver_calc.purity.value = 'SS'; return true; }
-                                if( document.silver_calc.purity.value == 'SS'   ){  document.silver_calc.purity.value = 'Sterling'; return true; }
-                                if( document.silver_calc.purity.value == 'Sterling' ){  document.silver_calc.purity.value = '.999'; return true; }
-                        }
-                        if( direction == 'dn' ){
-                                if( document.silver_calc.purity.value == '.999'  ){     document.silver_calc.purity.value = 'Sterling'; return true; }
-                                if( document.silver_calc.purity.value == 'Sterling' ){  document.silver_calc.purity.value = 'SS'; return true; }
-                                if( document.silver_calc.purity.value == 'SS'  ){   document.silver_calc.purity.value = '.925'; return true; }
-                                if( document.silver_calc.purity.value == '.925'  ){     document.silver_calc.purity.value = '.830'; return true; }
-                                if( document.silver_calc.purity.value == '.830'  ){     document.silver_calc.purity.value = '.800'; return true; }
-                        }
-                        return true;
-                }
-        //--------------------------------------
-                // SILVER - UNIT
-                //--------------------------------------
-                function silver_unit( ){
-                            
-            if( document.silver_calc.unit.value == 'g'   ){  document.silver_calc.unit.value = 'oz'; return true; }
-                    if( document.silver_calc.unit.value == 'oz'   ){ document.silver_calc.unit.value = 'dwt'; return true; }
-                    if( document.silver_calc.unit.value == 'dwt'  ){ document.silver_calc.unit.value = 'g';  return true; }
-            
-            return true;
-        }   
-                //--------------------------------------
-                // CALC SILVER TOTAL
-                //--------------------------------------
-                function get_silver_tot(){
-
-            if( isNaN(document.silver_calc.wgt.value) ){ document.silver_calc.wgt.value = 0; }
-                        
-            var silver = 0;
-                        var perc = document.silver_calc.purity.value;
-            var wgt = document.silver_calc.wgt.value;
-
-            if( perc == 'Sterling' || perc == 'SS' ){ perc = .925; }
-
-                        //----------------------------------------
-                        // CONVERT UNITS
-                        //----------------------------------------
-                        //if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 28.3495231; }
-                        if( document.silver_calc.unit.value == 'oz' ){  wgt = wgt * 31.1; }
-            //if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt / 1.555; }
-            if( document.silver_calc.unit.value == 'dwt' ){ wgt = wgt * 1.555; }
-
-                        //----------------------------------------
-                        // CALC TOTAL
-                        //----------------------------------------
-                        silver = ( ( 17.2200 / 31.1 ) * perc ) * wgt;
-
-                        //----------------------------------------
-                        // IF TOT > 1000, USE DIFFERENT CLASS
-                        //----------------------------------------
-                        if( silver > 1000 ){  document.silver_calc.silver_tot.setAttribute("class", "input4a"); }
-                        if( silver > 10000 ){ document.silver_calc.silver_tot.setAttribute("class", "input4b"); }
-
-                        silver = silver.toFixed(2);
-                        silver = addCommas(silver);
-
-                        document.silver_calc.silver_tot.value = "$" + silver;
-
-                        return true;
-                }
-                //--------------------------------------
-                // DIAMOND - COLOR
-                //--------------------------------------
-                function diamond_color( direction ){
-
-            if( direction == 'dn' ){
-                if( document.diamond_calc.color.value == 'D' ){ document.diamond_calc.color.value = 'E'; return true; }
-                            if( document.diamond_calc.color.value == 'E' ){ document.diamond_calc.color.value = 'F'; return true; }
-                            if( document.diamond_calc.color.value == 'F' ){ document.diamond_calc.color.value = 'G'; return true; }
-                            if( document.diamond_calc.color.value == 'G' ){ document.diamond_calc.color.value = 'H'; return true; }
-                            if( document.diamond_calc.color.value == 'H' ){ document.diamond_calc.color.value = 'I'; return true; }
-                            if( document.diamond_calc.color.value == 'I' ){ document.diamond_calc.color.value = 'J'; return true; }
-                            if( document.diamond_calc.color.value == 'J' ){ document.diamond_calc.color.value = 'K'; return true; }
-                            if( document.diamond_calc.color.value == 'K' ){ document.diamond_calc.color.value = 'L'; return true; }
-                            if( document.diamond_calc.color.value == 'L' ){ document.diamond_calc.color.value = 'M'; return true; }
-            } 
-                        if( direction == 'up' ){
-                if( document.diamond_calc.color.value == 'M' ){ document.diamond_calc.color.value = 'L'; return true; }
-                            if( document.diamond_calc.color.value == 'L' ){ document.diamond_calc.color.value = 'K'; return true; }
-                            if( document.diamond_calc.color.value == 'K' ){ document.diamond_calc.color.value = 'J'; return true; }
-                            if( document.diamond_calc.color.value == 'J' ){ document.diamond_calc.color.value = 'I'; return true; }
-                            if( document.diamond_calc.color.value == 'I' ){ document.diamond_calc.color.value = 'H'; return true; }
-                            if( document.diamond_calc.color.value == 'H' ){ document.diamond_calc.color.value = 'G'; return true; }
-                            if( document.diamond_calc.color.value == 'G' ){ document.diamond_calc.color.value = 'F'; return true; }
-                            if( document.diamond_calc.color.value == 'F' ){ document.diamond_calc.color.value = 'E'; return true; }
-                            if( document.diamond_calc.color.value == 'E' ){ document.diamond_calc.color.value = 'D'; return true; }
-            }
-                        return true;
-                }
-                //--------------------------------------
-                // DIAMOND - CLARITY
-                //--------------------------------------
-                function diamond_clarity( direction ){
-
-            if( direction == 'up' ){
-                                if( document.diamond_calc.clarity.value == 'VVS1' ){ document.diamond_calc.clarity.value = 'IF'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VVS2' ){ document.diamond_calc.clarity.value = 'VVS1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VS1'  ){ document.diamond_calc.clarity.value = 'VVS2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VS2'  ){ document.diamond_calc.clarity.value = 'VS1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'SI1'  ){ document.diamond_calc.clarity.value = 'VS2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'SI2'  ){ document.diamond_calc.clarity.value = 'SI1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'I1'   ){ document.diamond_calc.clarity.value = 'SI2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'I2'   ){ document.diamond_calc.clarity.value = 'I1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'I3'   ){ document.diamond_calc.clarity.value = 'I2'; return true; }
-            }
-            if( direction == 'dn' ){
-                                if( document.diamond_calc.clarity.value == 'IF'   ){ document.diamond_calc.clarity.value = 'VVS1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VVS1' ){ document.diamond_calc.clarity.value = 'VVS2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VVS2' ){ document.diamond_calc.clarity.value = 'VS1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VS1'  ){ document.diamond_calc.clarity.value = 'VS2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'VS2'  ){ document.diamond_calc.clarity.value = 'SI1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'SI1'  ){ document.diamond_calc.clarity.value = 'SI2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'SI2'  ){ document.diamond_calc.clarity.value = 'I1'; return true; }
-                                if( document.diamond_calc.clarity.value == 'I1'   ){ document.diamond_calc.clarity.value = 'I2'; return true; }
-                                if( document.diamond_calc.clarity.value == 'I2'   ){ document.diamond_calc.clarity.value = 'I3'; return true; }
-                        }
-            return true;
-                }
-                //--------------------------------------
-                // DIAMOND - CUT
-                //--------------------------------------
-                function diamond_cut( ){
-                        
-            if( document.diamond_calc.cut.value == 'Round' ){ document.diamond_calc.cut.value = 'Fancy'; return true; }
-                        if( document.diamond_calc.cut.value == 'Fancy' ){ document.diamond_calc.cut.value = 'Round'; return true; }
-
-                        return true;
-                }
+<body>
     </script>
-
-<form name=gold_calc>
-<div class="content-1" id="content-1" >
-        <div id="main-container">
-            <div class="title"></div>
-            <div class="nav">
-                <ul>
-                    <li class="gold-selected" id="li-content-1"><a href="javascript:void(0);">Gold</a></li>
-                    <li class="silver" id="li-content-2"><a href="javascript:void(0);" onclick="flip_tabs('content-2','li-content-2')">Silver</a></li>
-                    <li class="diamonds" id="li-content-3"><a href="javascript:void(0);" onclick="flip_tabs('content-3','li-content-3')">Diamonds</a></li>
-                                    </ul>
-            </div>
-            <div class="main-content">
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Weight:</b> Please enter the weight of your gold here.  If you are unsure of the exact weight of your shipment, guess.  For reference, a U.S. nickel weighs about 5 grams.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Weight</p>
-                    <input type="text" class="input1" value="0" name="wgt" onblur="get_gold_tot();" onclick="this.select();" />
-                    <input type="text" class="input2" value="g" name="unit" readonly />
-                    <div class="up-down-buttons upper">
-                        <a href="#" class="up-button" onclick="gold_unit();get_gold_tot();"></a>
-                        <a href="#" class="down-button" onclick="gold_unit();get_gold_tot();"></a>
+    <form name=gold_calc>
+    <div class="content-1" id="content-1" >
+            <div id="main-container">
+                <div class="title"></div>
+                    <div class="nav">
+                        <ul>
+                            <li class="gold-selected" id="li-content-1"><a href="javascript:void(0);">Gold</a></li>
+                            <li class="silver" id="li-content-2"><a href="javascript:void(0);" onclick="flip_tabs('content-2','li-content-2')">Silver</a></li>
+                        </ul>
+                    </div>
+                <div class="main-content">
+                    <div class="info-line">
+                        <p>Weight</p>
+                        <input type="text" class="input1" value="0" name="wgt" onblur="get_gold_tot();" onclick="this.select();" />
+                        <input type="text" class="input2" value="g" name="unit" readonly />
+                        <div class="up-down-buttons upper">
+                            <a href="#" class="up-button" onclick="gold_unit();get_gold_tot();"></a>
+                            <a href="#" class="down-button" onclick="gold_unit();get_gold_tot();"></a>
+                        </div>
+                    </div>
+                    <div class="info-line">
+                        <p>Karats</p>
+                        <input type="text" class="input3" name="karat" value="14K" onblur="get_gold_tot();" readonly />
+                        <div class="up-down-buttons">
+                            <a href="#" class="up-button" onclick="gold_karat('up');get_gold_tot();"></a>
+                            <a href="#" class="down-button" onclick="gold_karat('dn');get_gold_tot();"></a>
+                        </div>
+                    </div>
+                    <div class="info-line">
+                        <a href="#" class="equals"></a>
+                        <input type="text" class="input4a" name="gold_tot" value="$0" readonly />
                     </div>
                 </div>
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Karats:</b> Please enter the karat of your gold here.  If you are measuring jewelry, there is usually a stamp indicating the karat value on the inside of the piece (for example, a carving on the inside surface of a ring).  The higher the karat value, the more gold there is in the piece and the softer the piece will be.  If you are unsure and there is no karat stamp, 14 karat is the most common.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,-110,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Karats</p>
-                    <input type="text" class="input3" name="karat" value="14K" onblur="get_gold_tot();" readonly />
-                    <div class="up-down-buttons">
-                        <a href="#" class="up-button" onclick="gold_karat('up');get_gold_tot();"></a>
-                        <a href="#" class="down-button" onclick="gold_karat('dn');get_gold_tot();"></a>
+                <div class="total">
+                    <div class="content" id="today">
+                        <p></p><!-- Today's Gold Price: $1241.00/oz -->
                     </div>
-                </div>
-                <div class="info-line">
-                    <a href="#" class="equals"></a>
-                    <input type="text" class="input4a" name="gold_tot" value="$0" readonly />
-                </div>
             </div>
-            <div class="total">
-                <div class="content" id="today">
-                    <p>Today's Gold Price: $1241.00/oz</p>
-                </div>
-                                <div class="special_bonus" id="special_bonus" style="display:none;">
-                                        <a href="http://cashforgoldusa.com" target="_parent"><img src="/calc/images-large/calculator-rollover.jpg" /></a>
-                                </div>
-            </div>
-            <div class="embed">
-                <div class="content">
-                    <a href=http://goldvaluecalculator.com/embed-the-gold-calculator/ target=_parent>+ Embed this calculator on your site</a>
-                                    </div>
-            </div>
-        </div>
-</div>
-</form>
+    </div>
+    </form>
     
-<form name=silver_calc>
-<div class="content-2" id="content-2" style="display:none;">
-        <div id="main-container">
-            <div class="title-silver"></div>
-            <div class="nav">
-                <ul>
-                    <li class="gold" id="li-content-3"><a href="javascript:void(0);" onclick="flip_tabs('content-1','li-content-3')">Gold</a></li>
-                    <li class="silver-selected" id="li-content-4"><a href="javascript:void(0);">Silver</a></li>
-                    <li class="diamonds" id="li-content-9"><a href="javascript:void(0);" onclick="flip_tabs('content-3','li-content-9')">Diamonds</a></li>
-                    
-                                    </ul>
-            </div>
-            <div class="main-content">
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Weight:</b> Please enter the weight of your silver here. If you are unsure of the exact weight of your shipment, guess.  For reference, a U.S. nickel weighs about 5 grams.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Weight</p>
-                    <input type="text" class="input1" name="wgt" value="0" onblur="get_silver_tot();" onclick="this.select();" />
-                    <input type="text" class="input2" name="unit" value="g" readonly />
-                    <div class="up-down-buttons upper">
-                        <a href="#" class="up-button" onclick="silver_unit();get_silver_tot();"></a>
-                        <a href="#" class="down-button" onclick="silver_unit();get_silver_tot();"></a>
+    <form name=silver_calc>
+        <div class="content-2" id="content-2" style="display:none;">
+            <div id="main-container">
+                <div class="title-silver"></div>
+                    <div class="nav">
+                        <ul>
+                            <li class="gold" id="li-content-3"><a href="javascript:void(0);" onclick="flip_tabs('content-1','li-content-3')">Gold</a></li>
+                            <li class="silver-selected" id="li-content-4"><a href="javascript:void(0);">Silver</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="main-content">
+                        <div class="info-line">
+                            <input type="text" class="input1" name="wgt" value="0" onblur="get_silver_tot();" onclick="this.select();" />
+                            <input type="text" class="input2" name="unit" value="g" readonly />
+                            <div class="up-down-buttons upper">
+                                <a href="#" class="up-button" onclick="silver_unit();get_silver_tot();"></a>
+                                <a href="#" class="down-button" onclick="silver_unit();get_silver_tot();"></a>
+                            </div>
+                        </div>
+                        <div class="info-line">
+                            <p>Purity</p>
+                            <input type="text" class="input3" name="purity" value="SS" readonly />
+                            <div class="up-down-buttons">
+                                <a href="#" class="up-button" onclick="silver_purity('up');get_silver_tot();"></a>
+                                <a href="#" class="down-button" onclick="silver_purity('dn');get_silver_tot();"></a>
+                            </div>
+                        </div>
+                        <div class="info-line">
+                            <a href="#" class="equals"></a>
+                            <input type="text" class="input4a" name="silver_tot" value="$0" readonly />
+                        </div>
+                    </div>
+                    <div class="total total-silver">
+                        <div class="content">
+                            <p></p> <!-- Today's Silver Price: $17.22/oz -->
+                        </div>
                     </div>
                 </div>
-                <div class="info-line">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Purity:</b> Please enter the purity of your silver here.  If you are unsure, check the piece for its hallmark; silver pieces are traditionally imprinted with the purity level on an unobtrusive part of the piece (try the back of a fork or spoon for silverware).  If there is no hallmark on your piece, sterling silver used for silverware and jewelry is usually 925 in purity, while coins are usually 900.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,-110,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Purity</p>
-                    <input type="text" class="input3" name="purity" value="SS" readonly />
-                    <div class="up-down-buttons">
-                        <a href="#" class="up-button" onclick="silver_purity('up');get_silver_tot();"></a>
-                        <a href="#" class="down-button" onclick="silver_purity('dn');get_silver_tot();"></a>
-                    </div>
-                </div>
-                <div class="info-line">
-                    <a href="#" class="equals"></a>
-                    <input type="text" class="input4a" name="silver_tot" value="$0" readonly />
-                </div>
-            </div>
-            <div class="total total-silver">
-                <div class="content">
-                    <p>Today's Silver Price: $17.22/oz</p>
-                </div>
-            </div>
-            <div class="embed">
-                <div class="content">
-                    <a href=http://goldvaluecalculator.com/embed-the-gold-calculator/ target=_parent>+ Embed this calculator on your site</a>
-                                    </div>
-            </div>
         </div>
-</div>
-</form>
-<form name=diamond_calc>
-<div class="content-3" id="content-3" style="display:none;">
-        <div id="main-container">
-            <div class="title-diamonds"></div>
-            <div class="nav">
-                <ul>
-                    <li class="gold" id="li-content-4"><a href="javascript:void(0);" onclick="flip_tabs('content-1','li-content-4')">Gold</a></li>
-                    <li class="silver" id="li-content-5"><a href="javascript:void(0);" onclick="flip_tabs('content-2','li-content-5')">Silver</a></li>
-                    <li class="diamonds-selected" id="li-content-6"><a href="javascript:void(0);">Diamonds</a></li>
-                </ul>
-            </div>
-            <div class="main-content">
-                <div class="info-line info-line-diamonds1">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Clarity:</b> To determine the clarity of your diamond, look at the paperwork that accompanied it when you made the purchase. This calculator uses the clarity grading that the Gemological Institute of America uses, with ten different steps on the scale. The steps from most clear to least clear are IF (Internally Flawless), VVS1 and VVS2 (Very Very Slightly Included), VS1 and VS2 (Very Slightly Included), SI1 and SI2 (Slightly Included) and I2 and I3 (Included). If you do not have the paperwork needed to figure out what clarity your diamond is, enlist the help of a jeweler. The grades of clarity are nearly impossible to distinguish with the untrained eye.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p class="clarity">Clarity</p>
-                    <input type="text" value="IF" name="clarity" class="input5" readonly />
-                    <div class="up-down-buttons upper2">
-                        <a href="#" class="up-button" onclick="diamond_clarity('up');get_diamond_tot();"></a>
-                        <a href="#" class="down-button" onclick="diamond_clarity('dn');get_diamond_tot();"></a>
-                    </div>
-                    <p class="color">Color</p>
-                    <input type="text" value="D" name="color" class="input6" readonly />
-                    <div class="up-down-buttons upper">
-                        <a href="#" class="up-button" onclick="diamond_color('up');get_diamond_tot();"></a>
-                        <a href="#" class="down-button" onclick="diamond_color('dn');get_diamond_tot();"></a>
-                    </div>
-                    <a href="#" class="question question-cut" onmouseover="return overlib('<b>Color:</b> Color refers to a diamonds lack of color: D is the whitest diamond possible, while M has a definite color tint. The actual color degree should be noted in the paperwork that came along with the diamond when you bought it. If you do not have this paper you will have to get professional help in figuring out the color: often times the differentiation between letters is too slight for the human eye to discern.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,-350,OFFSETY,-110,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                </div>
-                <div class="info-line info-line-diamonds">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Cut:</b> The shape of your diamond. We have the most popular diamond shapes listed here: round, princess, emerald, oval, pear, marquise, and heart. If you are unsure regarding the shape of your diamond, try looking up pictures of each of the shapes online and comparing your diamond to the pictures. Round and emerald cut are probably the most popular shapes for rings, while pear cut is often found in earrings.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Cut</p>
-                    <input type="text" class="input3" name="cut" value="Round" readonly />
-                    <div class="up-down-buttons">
-                        <a href="#" class="up-button" onclick="diamond_cut();get_diamond_tot();"></a>
-                        <a href="#" class="down-button" onclick="diamond_cut();get_diamond_tot();"></a>
-                    </div>
-                </div>
-                <div class="info-line info-line-diamonds">
-                    <a href="#" class="question" onmouseover="return overlib('<b>Carat:</b> Carat is a specific measure of a diamonds weight. Generally speaking, the larger the carat the larger the diamond, but this is not necessarily the case. The best place to determine you diamonds carat worth is with the paperwork that came with the jewel. If you no longer have this paperwork, professional help is often required in order to ascertain the carat of your diamond.',WIDTH,350,HEIGHT,50,FGCOLOR,'#ffffff',OFFSETX,10,OFFSETY,10,CELLPAD,20,TEXTSIZE,'15px');" onmouseout="return nd();"></a>
-                    <p>Carat</p>
-                    <input type="text" class="input3" name="carat" value="0" onblur="get_diamond_tot();" onclick="this.select();" />
-                </div>
-                <div class="info-line info-line-diamonds2">
-                    <a href="#" class="equals"></a>
-                    <input type="text" class="input4b" name="diamond_tot" value="$0" readonly />
-                </div>
-            </div>
-            <div class="total-diamonds">
-                <div class="content">
-                    <p>Diamond estimate based on current wholesale market values.</p>
-                </div>
-            </div>
-            <div class="embed">
-                <div class="content">
-                    <a href=http://goldvaluecalculator.com/embed-the-gold-calculator/ target=_parent>+ Embed this calculator on your site</a>
-                </div>
-            </div>
-                    </div>
-</div>
-</form>
-    </body>
+    </form>
+</body>
 </html>

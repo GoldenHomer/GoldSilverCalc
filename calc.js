@@ -11,12 +11,12 @@ function flip_tabs(layer,li){
 	// UN-FOCUS ALL OTHER TABS
 	//--------------------------------
 	//WITHDIAMONDS for( var i = 1 ; i < 10 ; i++ ){
-	for( var i = 1 ; i < 5 ; i++ ){
-		if( layer != 'content-' + i ){
-			document.getElementById('content-' + i ).style.display='none';
-			//document.getElementById('li-content-' + i ).className='notat';
-		}
-	}
+	// for( var i = 1 ; i < 5 ; i++ ){
+	// 	if( layer != 'content-' + i ){
+	// 		document.getElementById('content-' + i ).style.display='none';
+	// 		//document.getElementById('li-content-' + i ).className='notat';
+	// 	}
+	// }
 }
 
 
